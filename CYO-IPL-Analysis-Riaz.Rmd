@@ -7,7 +7,9 @@ output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = TRUE,
+    message = TRUE,
+    warning = TRUE)
 library(knitr)
 library(kableExtra)
 ```
@@ -59,7 +61,7 @@ We will also build a model to predict the winner of a match.
 To install the required packages, we use if(!require and load the packages from http://cran.us.r-project.org. Load Libraries and the IPL dataset
 
 
-```{r message=FALSE, warning=FALSE}
+```{r load pakages, message=FALSE, warning=FALSE,echo=TRUE}
 
 # Install all needed libraries 
 
@@ -109,7 +111,7 @@ We will now inspect the data set to view column names
 
 Lets check how the data looks in the two data sets
 
-```{r message=FALSE, warning=FALSE}
+```{r} 
 # inspect column nammes in the datasets (Can use colnames or names)
 colnames(ball_by_ball)
 names(matches)
@@ -380,7 +382,7 @@ Lets look at how players performed during the IPL. Like all games the MVP dictat
 will look at the player_of_match field to pick the top 25 playes in the IPL so far.
 
 \newpage
-# Palyer Statistics : Batsman
+### Palyer Statistics : Batsman
 
 
 ```{r message=FALSE, warning=FALSE}
@@ -429,7 +431,7 @@ Now that we have seen the batsmen let us also look at the top bowlers in the IPL
 a good bowler by the number of wickets taken and their econoomy rate (the less number of runs an over)
 
 \newpage
-# Palyer Statistics : Bowler
+### Palyer Statistics : Bowler
 
 ```{r message=FALSE, warning=FALSE}
 # Let us check the the distict set of dimissal types
@@ -572,7 +574,7 @@ percent(sum(total_wickets_by_top_25$total_wickets)/total_ipl_wickets)
 **Conclusion:** From the above analysis the top 25 bowlers  contibute to 30% of the total wickets taken in the IPL
 
 \newpage
-# Team Statistics 
+### Team Statistics 
 
 Let us analyze some Team statistics
 
@@ -1024,9 +1026,7 @@ match_predictor_ds <- matches %>%
   filter(winner != ""  & team1 %in% best_teams$team & team2 %in% best_teams$team)
 any(is.na(match_predictor_ds))
 summary(match_predictor_ds)
-match_predictor_ds
 
-n_distinct(match_predictor_ds$team1)
 
 levels(as.factor(match_predictor_ds$team1))
 
@@ -1072,8 +1072,7 @@ match_predictor_ds$toss_winner[match_predictor_ds$toss_winner == "Chennai Super 
 match_predictor_ds$toss_winner[match_predictor_ds$toss_winner == "Sunrisers Hyderabad"] <- "Hyd"
 match_predictor_ds$toss_winner[match_predictor_ds$toss_winner == "Rajasthan Royals"] <- "Rajasthan"
 
-match_predictor_ds$team1
-match_predictor_ds$team2
+
 # Create a Train Set and a Test Set
 
 set.seed(1, sample.kind="Rounding") # if using R 3.5 or earlier, use `set.seed(1)`
