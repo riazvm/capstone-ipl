@@ -1,1 +1,3 @@
 # capstone-ipl
+
+This is the submission for the choose-your-own project for the Harvard's multi-part Data Science Professional Certificate series. The goal of this project is to rank players and predict the winner of a match. T20 is a modern format of the original game of cricket where each ball and strike count. A team can acquire players through any of the three ways: the annual player auction, trading players with other teams during the trading windows, and signing replacements for unavailable players. Players sign up for the auction and also set their base price, and are bought by the franchise that bids the highest for them.
